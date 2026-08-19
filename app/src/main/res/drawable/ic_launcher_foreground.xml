@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- POS Machine Body (Isometric Modern Terminal Base) -->
+    <path
+        android:pathData="M34,42 C34,37.58 37.58,34 42,34 L66,34 C70.42,34 74,37.58 74,42 L74,70 C74,74.42 70.42,78 66,78 L42,78 C37.58,78 34,74.42 34,70 Z"
+        android:fillColor="#FFFFFFFF" />
+
+    <!-- Terminal Screen Area -->
+    <path
+        android:pathData="M38,40 C38,38.34 39.34,37 41,37 L67,37 C68.66,37 70,38.34 70,40 L70,58 C70,59.66 68.66,61 67,61 L41,61 C39.34,61 38,59.66 38,58 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="38"
+                android:startY="37"
+                android:endX="70"
+                android:endY="61"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#FF064E3B" />
+                <item android:offset="1.0" android:color="#FF022C22" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Screen Content: Mini Chart & Total Indicator -->
+    <path
+        android:pathData="M43,45 L49,45"
+        android:strokeColor="#FF34D399"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M43,51 L56,51"
+        android:strokeColor="#FF6EE7B7"
+        android:strokeWidth="2"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M43,55 L51,55"
+        android:strokeColor="#FFA7F3D0"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round" />
+
+    <!-- Smart Transaction / Success Badge on Screen -->
+    <path
+        android:pathData="M64,51 C64,53.21 62.21,55 60,55 C57.79,55 56,53.21 56,51 C56,48.79 57.79,47 60,47 C62.21,47 64,48.79 64,51 Z"
+        android:fillColor="#FF10B981" />
+    <path
+        android:pathData="M58.5,51 L59.5,52 L61.5,50"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="1.2"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+
+    <!-- Fast Checkout Lightning / Spark Badge (Top Right of Terminal) -->
+    <path
+        android:pathData="M65,24 L75,24 L69,33 L76,33 L63,47 L66,36 L60,36 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="60"
+                android:startY="24"
+                android:endX="76"
+                android:endY="47"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#FFFBBF24" />
+                <item android:offset="1.0" android:color="#FFF59E0B" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Keypad Dots & Card Reader Slit -->
+    <path
+        android:pathData="M42,66 L52,66"
+        android:strokeColor="#FF94A3B8"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M57,66 L66,66"
+        android:strokeColor="#FFCBD5E1"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M42,72 L66,72"
+        android:strokeColor="#FFE2E8F0"
+        android:strokeWidth="2"
+        android:strokeLineCap="round" />
+
+    <!-- Contactless NFC Wave (Top Left Accent) -->
+    <path
+        android:pathData="M35,32 A14,14 0 0,1 45,22"
+        android:strokeColor="#FF34D399"
+        android:strokeWidth="2"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M33,26 A22,22 0 0,1 48,16"
+        android:strokeColor="#FF6EE7B7"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:strokeAlpha="0.7" />
+
+</vector>

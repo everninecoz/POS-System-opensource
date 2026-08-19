@@ -1,0 +1,124 @@
+package com.posopensrc.ui.theme
+
+import androidx.compose.ui.graphics.Color
+
+// ==========================================
+// MATERIAL 3 TONAL PALETTE - EMERALD FINTECH
+// ==========================================
+
+// Light Scheme Colors
+val PrimaryLight = Color(0xFF006C4C)
+val OnPrimaryLight = Color(0xFFFFFFFF)
+val PrimaryContainerLight = Color(0xFF89F8C7)
+val OnPrimaryContainerLight = Color(0xFF002114)
+
+val SecondaryLight = Color(0xFF4C6357)
+val OnSecondaryLight = Color(0xFFFFFFFF)
+val SecondaryContainerLight = Color(0xFFCEE9D9)
+val OnSecondaryContainerLight = Color(0xFF082016)
+
+val TertiaryLight = Color(0xFF3E6373)
+val OnTertiaryLight = Color(0xFFFFFFFF)
+val TertiaryContainerLight = Color(0xFFC2E8FC)
+val OnTertiaryContainerLight = Color(0xFF001F2A)
+
+val BackgroundLight = Color(0xFFF6FBF7)
+val OnBackgroundLight = Color(0xFF181D1A)
+val SurfaceLight = Color(0xFFFFFFFF)
+val OnSurfaceLight = Color(0xFF181D1A)
+val SurfaceVariantLight = Color(0xFFDBE5DE)
+val OnSurfaceVariantLight = Color(0xFF404944)
+val SurfaceContainerLight = Color(0xFFECEFEA)
+val SurfaceContainerHighLight = Color(0xFFE6EAE4)
+
+val OutlineLight = Color(0xFF707973)
+val OutlineVariantLight = Color(0xFFBFC9C2)
+
+val ErrorLight = Color(0xFFBA1A1A)
+val OnErrorLight = Color(0xFFFFFFFF)
+val ErrorContainerLight = Color(0xFFFFDAD6)
+val OnErrorContainerLight = Color(0xFF410002)
+
+// Dark Scheme Colors
+val PrimaryDark = Color(0xFF6CDBAC)
+val OnPrimaryDark = Color(0xFF003825)
+val PrimaryContainerDark = Color(0xFF005138)
+val OnPrimaryContainerDark = Color(0xFF89F8C7)
+
+val SecondaryDark = Color(0xFFB3CCBE)
+val OnSecondaryDark = Color(0xFF1E352A)
+val SecondaryContainerDark = Color(0xFF354B40)
+val OnSecondaryContainerDark = Color(0xFFCEE9D9)
+
+val TertiaryDark = Color(0xFFA6CCE0)
+val OnTertiaryDark = Color(0xFF073544)
+val TertiaryContainerDark = Color(0xFF244B5A)
+val OnTertiaryContainerDark = Color(0xFFC2E8FC)
+
+val BackgroundDark = Color(0xFF0F1512)
+val OnBackgroundDark = Color(0xFFDEE4DF)
+val SurfaceDark = Color(0xFF121B17)
+val OnSurfaceDark = Color(0xFFDEE4DF)
+val SurfaceVariantDark = Color(0xFF404944)
+val OnSurfaceVariantDark = Color(0xFFBFC9C2)
+val SurfaceContainerDark = Color(0xFF1A2420)
+val SurfaceContainerHighDark = Color(0xFF202A26)
+
+val OutlineDark = Color(0xFF8A938C)
+val OutlineVariantDark = Color(0xFF404944)
+
+val ErrorDark = Color(0xFFFFB4AB)
+val OnErrorDark = Color(0xFF690005)
+val ErrorContainerDark = Color(0xFF93000A)
+val OnErrorContainerDark = Color(0xFFFFDAD6)
+
+// ==========================================
+// BACKWARD COMPATIBILITY ALIASES & SEMANTICS
+// ==========================================
+val GreenPrimary = PrimaryLight
+val GreenOnPrimary = OnPrimaryLight
+val GreenPrimaryContainer = PrimaryContainerLight
+val GreenOnPrimaryContainer = OnPrimaryContainerLight
+val GreenSecondary = SecondaryLight
+val GreenSecondaryContainer = SecondaryContainerLight
+val GreenBackground = BackgroundLight
+val GreenSurface = SurfaceLight
+val GreenOnBackground = OnBackgroundLight
+val GreenOnSurface = OnSurfaceLight
+val GreenOnSurfaceVariant = OnSurfaceVariantLight
+val GreenOutline = OutlineLight
+val GreenError = ErrorLight
+val GreenErrorContainer = ErrorContainerLight
+
+val GreenPrimaryDark = PrimaryDark
+val GreenOnPrimaryDark = OnPrimaryDark
+val GreenPrimaryContainerDark = PrimaryContainerDark
+val GreenOnPrimaryContainerDark = OnPrimaryContainerDark
+val GreenSecondaryDark = SecondaryDark
+val GreenSecondaryContainerDark = SecondaryContainerDark
+val GreenBackgroundDark = BackgroundDark
+val GreenSurfaceDark = SurfaceDark
+val GreenOnBackgroundDark = OnBackgroundDark
+val GreenOnSurfaceDark = OnSurfaceDark
+val GreenOnSurfaceVariantDark = OnSurfaceVariantDark
+val GreenOutlineDark = OutlineDark
+val GreenErrorDark = ErrorDark
+val GreenErrorContainerDark = ErrorContainerDark
+
+// Extended Status Tokens
+val CartBadgeColor = Color(0xFFE11D48)
+val IncomeColor = Color(0xFF059669)
+val ExpenseColor = Color(0xFFDC2626)
+val WarningColor = Color(0xFFD97706)
+val InfoColor = Color(0xFF0284C7)
+
+// Retail Visual Accents
+val AmberGold = Color(0xFFF59E0B)
+val ReceiptPaperBg = Color(0xFFFCFDFD)
+val ReceiptDottedLine = Color(0xFFCBD5E1)
+val StockLowBadge = Color(0xFFFEF3C7)
+val StockLowText = Color(0xFF92400E)
+val StockOutBadge = Color(0xFFFEE2E2)
+val StockOutText = Color(0xFF991B1B)
+val StockOkBadge = Color(0xFFD1FAE5)
+val StockOkText = Color(0xFF065F46)

@@ -1,0 +1,1728 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS UMKM - Mockup</title>
+    <style>
+        /* ============================================
+           CSS VARIABLES - LIGHT MODE (DEFAULT)
+           ============================================ */
+        :root {
+            --primary: #2E7D32;
+            --primary-light: #4CAF50;
+            --primary-dark: #1B5E20;
+            --primary-container: #C8E6C9;
+            --on-primary: #FFFFFF;
+            --on-primary-container: #1B5E20;
+            --secondary: #558B2F;
+            --secondary-container: #DCEDC8;
+            --background: #F1F8E9;
+            --surface: #FFFFFF;
+            --surface-variant: #F5F5F5;
+            --on-background: #1C1C1C;
+            --on-surface: #1C1C1C;
+            --on-surface-variant: #616161;
+            --outline: #BDBDBD;
+            --error: #D32F2F;
+            --error-container: #FFEBEE;
+            --shadow: rgba(0,0,0,0.1);
+            --cart-badge: #D32F2F;
+            --income: #2E7D32;
+            --expense: #D32F2F;
+            --card-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            --border-radius: 16px;
+            --sidebar-bg: #FFFFFF;
+            --input-bg: #F5F5F5;
+        }
+
+        /* ============================================
+           DARK MODE
+           ============================================ */
+        .dark-mode {
+            --primary: #81C784;
+            --primary-light: #A5D6A7;
+            --primary-dark: #4CAF50;
+            --primary-container: #1B5E20;
+            --on-primary: #1B5E20;
+            --on-primary-container: #C8E6C9;
+            --secondary: #AED581;
+            --secondary-container: #33691E;
+            --background: #121212;
+            --surface: #1E1E1E;
+            --surface-variant: #2C2C2C;
+            --on-background: #E0E0E0;
+            --on-surface: #E0E0E0;
+            --on-surface-variant: #AAAAAA;
+            --outline: #555555;
+            --error: #EF9A9A;
+            --error-container: #4A1515;
+            --shadow: rgba(0,0,0,0.3);
+            --cart-badge: #EF9A9A;
+            --income: #81C784;
+            --expense: #EF9A9A;
+            --card-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            --sidebar-bg: #1A1A1A;
+            --input-bg: #2C2C2C;
+        }
+
+        /* ============================================
+           RESET & BASE
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--background);
+            color: var(--on-background);
+            height: 100vh;
+            overflow: hidden;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* ============================================
+           LAYOUT - TABLET OPTIMIZED
+           ============================================ */
+        .app-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 72px;
+            background: var(--sidebar-bg);
+            border-right: 1px solid var(--outline);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 16px 0;
+            gap: 8px;
+            transition: background 0.3s;
+        }
+
+        .sidebar-logo {
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--on-primary);
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+
+        .sidebar-btn {
+            width: 48px;
+            height: 48px;
+            border: none;
+            background: transparent;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--on-surface-variant);
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .sidebar-btn:hover {
+            background: var(--primary-container);
+            color: var(--primary);
+        }
+
+        .sidebar-btn.active {
+            background: var(--primary);
+            color: var(--on-primary);
+        }
+
+        .sidebar-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .sidebar-badge {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            width: 18px;
+            height: 18px;
+            background: var(--cart-badge);
+            color: white;
+            border-radius: 50%;
+            font-size: 10px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sidebar-spacer {
+            flex: 1;
+        }
+
+        /* MAIN CONTENT */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* HEADER */
+        .header {
+            height: 64px;
+            background: var(--surface);
+            border-bottom: 1px solid var(--outline);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            transition: background 0.3s;
+        }
+
+        .header-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--on-surface);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .dark-toggle {
+            width: 48px;
+            height: 28px;
+            background: var(--outline);
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            position: relative;
+            transition: background 0.3s;
+        }
+
+        .dark-toggle.active {
+            background: var(--primary);
+        }
+
+        .dark-toggle::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 22px;
+            height: 22px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+
+        .dark-toggle.active::after {
+            transform: translateX(20px);
+        }
+
+        .store-name {
+            font-size: 14px;
+            color: var(--on-surface-variant);
+        }
+
+        /* PAGE CONTENT */
+        .page-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 24px;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* ============================================
+           HOME PAGE
+           ============================================ */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: var(--surface);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+
+        .stat-icon.green {
+            background: var(--primary-container);
+            color: var(--primary);
+        }
+
+        .stat-icon.red {
+            background: var(--error-container);
+            color: var(--error);
+        }
+
+        .stat-icon.blue {
+            background: #E3F2FD;
+            color: #1976D2;
+        }
+
+        .dark-mode .stat-icon.blue {
+            background: #1A237E;
+            color: #64B5F6;
+        }
+
+        .stat-icon.orange {
+            background: #FFF3E0;
+            color: #F57C00;
+        }
+
+        .dark-mode .stat-icon.orange {
+            background: #4A2600;
+            color: #FFB74D;
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--on-surface);
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--on-surface-variant);
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--on-surface);
+        }
+
+        .recent-transactions {
+            background: var(--surface);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+
+        .transaction-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--outline);
+            transition: background 0.2s;
+        }
+
+        .transaction-item:last-child {
+            border-bottom: none;
+        }
+
+        .transaction-item:hover {
+            background: var(--surface-variant);
+        }
+
+        .transaction-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .transaction-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: var(--primary-container);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .transaction-name {
+            font-weight: 500;
+            color: var(--on-surface);
+        }
+
+        .transaction-time {
+            font-size: 12px;
+            color: var(--on-surface-variant);
+        }
+
+        .transaction-amount {
+            font-weight: 600;
+            color: var(--income);
+        }
+
+        /* ============================================
+           PRODUCTS PAGE
+           ============================================ */
+        .products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: var(--input-bg);
+            border-radius: 12px;
+            padding: 10px 16px;
+            width: 300px;
+            border: 1px solid var(--outline);
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            outline: none;
+            margin-left: 8px;
+            font-size: 14px;
+            color: var(--on-surface);
+            width: 100%;
+        }
+
+        .search-box svg {
+            color: var(--on-surface-variant);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--on-primary);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .category-chips {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .chip {
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid var(--outline);
+            background: var(--surface);
+            color: var(--on-surface);
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+
+        .chip:hover, .chip.active {
+            background: var(--primary);
+            color: var(--on-primary);
+            border-color: var(--primary);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 16px;
+        }
+
+        .product-card {
+            background: var(--surface);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .product-image {
+            height: 120px;
+            background: var(--primary-container);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 40px;
+        }
+
+        .product-info {
+            padding: 12px;
+        }
+
+        .product-name {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 4px;
+            color: var(--on-surface);
+        }
+
+        .product-price {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .product-stock {
+            font-size: 12px;
+            color: var(--on-surface-variant);
+        }
+
+        .product-stock.low {
+            color: var(--error);
+        }
+
+        /* ============================================
+           CART PAGE (POS MODE)
+           ============================================ */
+        .pos-layout {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 24px;
+            height: calc(100vh - 112px);
+        }
+
+        .pos-products {
+            overflow-y: auto;
+        }
+
+        .pos-cart {
+            background: var(--surface);
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .cart-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--outline);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-title {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .cart-count {
+            background: var(--primary-container);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 12px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+            background: var(--surface-variant);
+            transition: background 0.2s;
+        }
+
+        .cart-item:hover {
+            background: var(--primary-container);
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 500;
+            font-size: 14px;
+            color: var(--on-surface);
+        }
+
+        .cart-item-price {
+            font-size: 13px;
+            color: var(--on-surface-variant);
+        }
+
+        .qty-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .qty-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            border: 1px solid var(--outline);
+            background: var(--surface);
+            color: var(--on-surface);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.2s;
+        }
+
+        .qty-btn:hover {
+            background: var(--primary);
+            color: var(--on-primary);
+            border-color: var(--primary);
+        }
+
+        .qty-value {
+            font-weight: 600;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        .cart-item-total {
+            font-weight: 600;
+            color: var(--primary);
+            min-width: 80px;
+            text-align: right;
+        }
+
+        .cart-item-remove {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            border: none;
+            background: transparent;
+            color: var(--error);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .cart-item-remove:hover {
+            background: var(--error-container);
+        }
+
+        .cart-summary {
+            padding: 16px 20px;
+            border-top: 1px solid var(--outline);
+            background: var(--surface-variant);
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: var(--on-surface-variant);
+        }
+
+        .summary-row.total {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--on-surface);
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--outline);
+        }
+
+        .cart-actions {
+            padding: 16px 20px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-checkout {
+            flex: 1;
+            background: var(--primary);
+            color: var(--on-primary);
+            border: none;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-checkout:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-clear {
+            background: var(--error-container);
+            color: var(--error);
+            border: none;
+            padding: 16px 20px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-clear:hover {
+            background: var(--error);
+            color: white;
+        }
+
+        /* ============================================
+           SETTINGS PAGE
+           ============================================ */
+        .settings-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .settings-card {
+            background: var(--surface);
+            border-radius: var(--border-radius);
+            padding: 24px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .settings-card-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--on-surface);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--on-surface-variant);
+            margin-bottom: 6px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1px solid var(--outline);
+            background: var(--input-bg);
+            color: var(--on-surface);
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .btn-save {
+            background: var(--primary);
+            color: var(--on-primary);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: all 0.2s;
+        }
+
+        .btn-save:hover {
+            background: var(--primary-dark);
+        }
+
+        /* ============================================
+           QUICK ADD BUTTONS (POS)
+           ============================================ */
+        .quick-add-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .quick-add-btn {
+            background: var(--surface);
+            border: 2px solid var(--outline);
+            border-radius: 12px;
+            padding: 16px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .quick-add-btn:hover {
+            border-color: var(--primary);
+            background: var(--primary-container);
+        }
+
+        .quick-add-emoji {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .quick-add-name {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--on-surface);
+        }
+
+        .quick-add-price {
+            font-size: 11px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* ============================================
+           MODAL
+           ============================================ */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--surface);
+            border-radius: var(--border-radius);
+            padding: 24px;
+            width: 400px;
+            max-width: 90%;
+        }
+
+        .modal-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .payment-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .payment-option {
+            border: 2px solid var(--outline);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .payment-option:hover, .payment-option.selected {
+            border-color: var(--primary);
+            background: var(--primary-container);
+        }
+
+        .payment-icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .payment-label {
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .receipt-preview {
+            background: var(--input-bg);
+            border-radius: 10px;
+            padding: 16px;
+            font-family: monospace;
+            font-size: 12px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+            white-space: pre-wrap;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .modal-actions button {
+            flex: 1;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-cancel {
+            background: var(--surface-variant);
+            color: var(--on-surface);
+        }
+
+        .btn-confirm {
+            background: var(--primary);
+            color: var(--on-primary);
+        }
+
+        /* ============================================
+           SCROLLBAR
+           ============================================ */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--outline);
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--on-surface-variant);
+        }
+
+        /* ============================================
+           EMPTY STATE
+           ============================================ */
+        .empty-state {
+            text-align: center;
+            padding: 48px 24px;
+            color: var(--on-surface-variant);
+        }
+
+        .empty-state-icon {
+            font-size: 64px;
+            margin-bottom: 16px;
+        }
+
+        .empty-state-text {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        /* ============================================
+           ANIMATIONS
+           ============================================ */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .page.active {
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* ============================================
+           TOAST NOTIFICATION
+           ============================================ */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--primary);
+            color: var(--on-primary);
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 500;
+            box-shadow: 0 4px 12px var(--shadow);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 200;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">POS</div>
+            
+            <button class="sidebar-btn active" onclick="showPage('home')" title="Beranda">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                    <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+            </button>
+            
+            <button class="sidebar-btn" onclick="showPage('products')" title="Produk">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <path d="M16 10a4 4 0 01-8 0"/>
+                </svg>
+            </button>
+            
+            <button class="sidebar-btn" onclick="showPage('pos')" title="Kasir">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="9" cy="21" r="1"/>
+                    <circle cx="20" cy="21" r="1"/>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/>
+                </svg>
+                <span class="sidebar-badge" id="cartBadge">3</span>
+            </button>
+            
+            <button class="sidebar-btn" onclick="showPage('settings')" title="Pengaturan">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+                </svg>
+            </button>
+            
+            <div class="sidebar-spacer"></div>
+            
+            <button class="sidebar-btn" onclick="toggleDarkMode()" title="Dark Mode">
+                <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+                </svg>
+            </button>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <!-- HEADER -->
+            <header class="header">
+                <h1 class="header-title" id="pageTitle">Beranda</h1>
+                <div class="header-actions">
+                    <span class="store-name">Warung Bahagia</span>
+                    <button class="dark-toggle" id="darkToggle" onclick="toggleDarkMode()"></button>
+                </div>
+            </header>
+
+            <!-- PAGE CONTENT -->
+            <div class="page-content">
+                <!-- HOME PAGE -->
+                <div class="page active" id="page-home">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon green">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+                                </svg>
+                            </div>
+                            <div class="stat-value">Rp 1.250.000</div>
+                            <div class="stat-label">Penjualan Hari Ini</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon blue">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+                                </svg>
+                            </div>
+                            <div class="stat-value">24</div>
+                            <div class="stat-label">Transaksi Hari Ini</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon orange">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
+                                </svg>
+                            </div>
+                            <div class="stat-value">156</div>
+                            <div class="stat-label">Total Produk</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon red">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+                                </svg>
+                            </div>
+                            <div class="stat-value">8</div>
+                            <div class="stat-label">Stok Menipis</div>
+                        </div>
+                    </div>
+
+                    <div class="section-title">Transaksi Terakhir</div>
+                    <div class="recent-transactions">
+                        <div class="transaction-item">
+                            <div class="transaction-info">
+                                <div class="transaction-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="transaction-name">Transaksi #0024</div>
+                                    <div class="transaction-time">14:32</div>
+                                </div>
+                            </div>
+                            <div class="transaction-amount">+Rp 85.000</div>
+                        </div>
+                        <div class="transaction-item">
+                            <div class="transaction-info">
+                                <div class="transaction-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="transaction-name">Transaksi #0023</div>
+                                    <div class="transaction-time">13:45</div>
+                                </div>
+                            </div>
+                            <div class="transaction-amount">+Rp 42.500</div>
+                        </div>
+                        <div class="transaction-item">
+                            <div class="transaction-info">
+                                <div class="transaction-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="transaction-name">Transaksi #0022</div>
+                                    <div class="transaction-time">12:20</div>
+                                </div>
+                            </div>
+                            <div class="transaction-amount">+Rp 125.000</div>
+                        </div>
+                        <div class="transaction-item">
+                            <div class="transaction-info">
+                                <div class="transaction-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="transaction-name">Transaksi #0021</div>
+                                    <div class="transaction-time">11:05</div>
+                                </div>
+                            </div>
+                            <div class="transaction-amount">+Rp 67.000</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRODUCTS PAGE -->
+                <div class="page" id="page-products">
+                    <div class="products-header">
+                        <div class="search-box">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                            </svg>
+                            <input type="text" placeholder="Cari produk...">
+                        </div>
+                        <button class="btn-primary">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                            Tambah Produk
+                        </button>
+                    </div>
+
+                    <div class="category-chips">
+                        <span class="chip active">Semua</span>
+                        <span class="chip">Makanan</span>
+                        <span class="chip">Minuman</span>
+                        <span class="chip">Snack</span>
+                        <span class="chip">Rokok</span>
+                        <span class="chip">Kebutuhan</span>
+                    </div>
+
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <div class="product-image">🍜</div>
+                            <div class="product-info">
+                                <div class="product-name">Indomie Goreng</div>
+                                <div class="product-price">Rp 3.500</div>
+                                <div class="product-stock">Stok: 48</div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">☕</div>
+                            <div class="product-info">
+                                <div class="product-name">Kopi ABC</div>
+                                <div class="product-price">Rp 2.000</div>
+                                <div class="product-stock">Stok: 72</div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">🥤</div>
+                            <div class="product-info">
+                                <div class="product-name">Air Mineral</div>
+                                <div class="product-price">Rp 4.000</div>
+                                <div class="product-stock">Stok: 36</div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">🚬</div>
+                            <div class="product-info">
+                                <div class="product-name">Surya 12</div>
+                                <div class="product-price">Rp 18.000</div>
+                                <div class="product-stock low">Stok: 3</div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">🍪</div>
+                            <div class="product-info">
+                                <div class="product-name">Oreo</div>
+                                <div class="product-price">Rp 8.500</div>
+                                <div class="product-stock">Stok: 24</div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">🧴</div>
+                            <div class="product-info">
+                                <div class="product-name">Sabun Lifebuoy</div>
+                                <div class="product-price">Rp 3.000</div>
+                                <div class="product-stock">Stok: 18</div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">🧃</div>
+                            <div class="product-info">
+                                <div class="product-name">Teh Pucuk</div>
+                                <div class="product-price">Rp 4.500</div>
+                                <div class="product-stock">Stok: 30</div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">🍞</div>
+                            <div class="product-info">
+                                <div class="product-name">Roti Tawar</div>
+                                <div class="product-price">Rp 12.000</div>
+                                <div class="product-stock low">Stok: 5</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- POS (KASIR) PAGE -->
+                <div class="page" id="page-pos">
+                    <div class="pos-layout">
+                        <div class="pos-products">
+                            <div class="search-box" style="margin-bottom: 16px;">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                                </svg>
+                                <input type="text" placeholder="Cari atau scan barcode...">
+                            </div>
+
+                            <div class="section-title">Quick Add</div>
+                            <div class="quick-add-grid">
+                                <div class="quick-add-btn" onclick="addToCart('Indomie Goreng', 3500)">
+                                    <div class="quick-add-emoji">🍜</div>
+                                    <div class="quick-add-name">Indomie Goreng</div>
+                                    <div class="quick-add-price">Rp 3.500</div>
+                                </div>
+                                <div class="quick-add-btn" onclick="addToCart('Kopi ABC', 2000)">
+                                    <div class="quick-add-emoji">☕</div>
+                                    <div class="quick-add-name">Kopi ABC</div>
+                                    <div class="quick-add-price">Rp 2.000</div>
+                                </div>
+                                <div class="quick-add-btn" onclick="addToCart('Air Mineral', 4000)">
+                                    <div class="quick-add-emoji">🥤</div>
+                                    <div class="quick-add-name">Air Mineral</div>
+                                    <div class="quick-add-price">Rp 4.000</div>
+                                </div>
+                                <div class="quick-add-btn" onclick="addToCart('Surya 12', 18000)">
+                                    <div class="quick-add-emoji">🚬</div>
+                                    <div class="quick-add-name">Surya 12</div>
+                                    <div class="quick-add-price">Rp 18.000</div>
+                                </div>
+                                <div class="quick-add-btn" onclick="addToCart('Oreo', 8500)">
+                                    <div class="quick-add-emoji">🍪</div>
+                                    <div class="quick-add-name">Oreo</div>
+                                    <div class="quick-add-price">Rp 8.500</div>
+                                </div>
+                                <div class="quick-add-btn" onclick="addToCart('Teh Pucuk', 4500)">
+                                    <div class="quick-add-emoji">🧃</div>
+                                    <div class="quick-add-name">Teh Pucuk</div>
+                                    <div class="quick-add-price">Rp 4.500</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pos-cart">
+                            <div class="cart-header">
+                                <span class="cart-title">Keranjang</span>
+                                <span class="cart-count" id="cartCount">3 item</span>
+                            </div>
+                            <div class="cart-items" id="cartItems">
+                                <div class="cart-item">
+                                    <div class="cart-item-info">
+                                        <div class="cart-item-name">Indomie Goreng</div>
+                                        <div class="cart-item-price">Rp 3.500 x 2</div>
+                                    </div>
+                                    <div class="qty-controls">
+                                        <button class="qty-btn" onclick="updateQty(0, -1)">-</button>
+                                        <span class="qty-value">2</span>
+                                        <button class="qty-btn" onclick="updateQty(0, 1)">+</button>
+                                    </div>
+                                    <div class="cart-item-total">Rp 7.000</div>
+                                    <button class="cart-item-remove" onclick="removeFromCart(0)">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="cart-item">
+                                    <div class="cart-item-info">
+                                        <div class="cart-item-name">Kopi ABC</div>
+                                        <div class="cart-item-price">Rp 2.000 x 1</div>
+                                    </div>
+                                    <div class="qty-controls">
+                                        <button class="qty-btn" onclick="updateQty(1, -1)">-</button>
+                                        <span class="qty-value">1</span>
+                                        <button class="qty-btn" onclick="updateQty(1, 1)">+</button>
+                                    </div>
+                                    <div class="cart-item-total">Rp 2.000</div>
+                                    <button class="cart-item-remove" onclick="removeFromCart(1)">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="cart-item">
+                                    <div class="cart-item-info">
+                                        <div class="cart-item-name">Air Mineral</div>
+                                        <div class="cart-item-price">Rp 4.000 x 1</div>
+                                    </div>
+                                    <div class="qty-controls">
+                                        <button class="qty-btn" onclick="updateQty(2, -1)">-</button>
+                                        <span class="qty-value">1</span>
+                                        <button class="qty-btn" onclick="updateQty(2, 1)">+</button>
+                                    </div>
+                                    <div class="cart-item-total">Rp 4.000</div>
+                                    <button class="cart-item-remove" onclick="removeFromCart(2)">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="cart-summary">
+                                <div class="summary-row">
+                                    <span>Subtotal</span>
+                                    <span id="subtotal">Rp 13.000</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span>Pajak (10%)</span>
+                                    <span id="tax">Rp 1.300</span>
+                                </div>
+                                <div class="summary-row total">
+                                    <span>Total</span>
+                                    <span id="total">Rp 14.300</span>
+                                </div>
+                            </div>
+                            <div class="cart-actions">
+                                <button class="btn-clear" onclick="clearCart()">Kosongkan</button>
+                                <button class="btn-checkout" onclick="showCheckout()">Bayar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SETTINGS PAGE -->
+                <div class="page" id="page-settings">
+                    <div class="settings-grid">
+                        <div class="settings-card">
+                            <div class="settings-card-title">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                                </svg>
+                                Informasi Toko
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Nama Toko</label>
+                                <input type="text" class="form-input" value="Warung Bahagia">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Alamat</label>
+                                <input type="text" class="form-input" value="Jl. Merdeka No. 123, Jakarta">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">No. Telepon</label>
+                                <input type="text" class="form-input" value="081234567890">
+                            </div>
+                            <button class="btn-save">Simpan</button>
+                        </div>
+
+                        <div class="settings-card">
+                            <div class="settings-card-title">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/>
+                                </svg>
+                                Pajak & Pembayaran
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Pajak (%)</label>
+                                <input type="number" class="form-input" value="10">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Pembayaran yang Aktif</label>
+                                <div style="display: flex; gap: 12px; margin-top: 8px;">
+                                    <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                                        <input type="checkbox" checked> Tunai
+                                    </label>
+                                    <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                                        <input type="checkbox" checked> QRIS
+                                    </label>
+                                    <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                                        <input type="checkbox" checked> Transfer
+                                    </label>
+                                </div>
+                            </div>
+                            <button class="btn-save">Simpan</button>
+                        </div>
+
+                        <div class="settings-card">
+                            <div class="settings-card-title">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/>
+                                </svg>
+                                Printer Struk
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Status Printer</label>
+                                <div style="display: flex; align-items: center; gap: 8px; padding: 12px; background: var(--primary-container); border-radius: 8px;">
+                                    <div style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%;"></div>
+                                    <span style="color: var(--primary); font-weight: 500;">Terkoneksi - TP-210</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Koneksi</label>
+                                <select class="form-input">
+                                    <option>Bluetooth</option>
+                                    <option>USB</option>
+                                </select>
+                            </div>
+                            <button class="btn-save">Test Cetak</button>
+                        </div>
+
+                        <div class="settings-card">
+                            <div class="settings-card-title">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                                Backup & Restore
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Export Data</label>
+                                <button class="btn-save" style="width: 100%; margin-top: 0;">Export ke JSON</button>
+                            </div>
+                            <div class="form-group" style="margin-top: 16px;">
+                                <label class="form-label">Import Data</label>
+                                <button class="btn-save" style="width: 100%; margin-top: 0; background: var(--surface-variant); color: var(--on-surface);">Import dari JSON</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- CHECKOUT MODAL -->
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal">
+            <div class="modal-title">Pembayaran</div>
+            <div class="receipt-preview">
+═══════════════════════════
+    WARUNG BAHAGIA
+  Jl. Merdeka No. 123
+     081234567890
+═══════════════════════════
+Tanggal: 18 Agustus 2026
+Kasir: Admin
+───────────────────────────
+Indomie Goreng  2  Rp 7.000
+Kopi ABC        1  Rp 2.000
+Air Mineral     1  Rp 4.000
+───────────────────────────
+Subtotal:        Rp 13.000
+Pajak (10%):      Rp 1.300
+═══════════════════════════
+TOTAL:           Rp 14.300
+═══════════════════════════
+            </div>
+            <div class="section-title" style="margin-bottom: 12px;">Metode Pembayaran</div>
+            <div class="payment-options">
+                <div class="payment-option selected" onclick="selectPayment(this)">
+                    <div class="payment-icon">💵</div>
+                    <div class="payment-label">Tunai</div>
+                </div>
+                <div class="payment-option" onclick="selectPayment(this)">
+                    <div class="payment-icon">📱</div>
+                    <div class="payment-label">QRIS</div>
+                </div>
+                <div class="payment-option" onclick="selectPayment(this)">
+                    <div class="payment-icon">🏦</div>
+                    <div class="payment-label">Transfer</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Jumlah Bayar</label>
+                <input type="text" class="form-input" value="Rp 15.000" id="amountPaid">
+            </div>
+            <div class="summary-row total" style="margin: 12px 0;">
+                <span>Kembalian</span>
+                <span style="color: var(--primary);">Rp 700</span>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-cancel" onclick="hideCheckout()">Batal</button>
+                <button class="btn-confirm" onclick="processPayment()">Bayar & Cetak Struk</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast">Produk ditambahkan ke keranjang</div>
+
+    <script>
+        // ============================================
+        // STATE
+        // ============================================
+        let isDarkMode = false;
+        let cart = [
+            { name: 'Indomie Goreng', price: 3500, qty: 2 },
+            { name: 'Kopi ABC', price: 2000, qty: 1 },
+            { name: 'Air Mineral', price: 4000, qty: 1 }
+        ];
+
+        // ============================================
+        // NAVIGATION
+        // ============================================
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.sidebar-btn').forEach(b => b.classList.remove('active'));
+            
+            // Show target page
+            document.getElementById('page-' + pageId).classList.add('active');
+            
+            // Update sidebar
+            const pageIndex = { 'home': 0, 'products': 1, 'pos': 2, 'settings': 3 };
+            document.querySelectorAll('.sidebar-btn')[pageIndex[pageId]].classList.add('active');
+            
+            // Update header
+            const titles = { 'home': 'Beranda', 'products': 'Produk', 'pos': 'Kasir', 'settings': 'Pengaturan' };
+            document.getElementById('pageTitle').textContent = titles[pageId];
+        }
+
+        // ============================================
+        // DARK MODE
+        // ============================================
+        function toggleDarkMode() {
+            isDarkMode = !isDarkMode;
+            document.body.classList.toggle('dark-mode', isDarkMode);
+            document.getElementById('darkToggle').classList.toggle('active', isDarkMode);
+        }
+
+        // ============================================
+        // CART FUNCTIONS
+        // ============================================
+        function addToCart(name, price) {
+            const existing = cart.find(item => item.name === name);
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push({ name, price, qty: 1 });
+            }
+            renderCart();
+            showToast(`${name} ditambahkan ke keranjang`);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            renderCart();
+        }
+
+        function updateQty(index, delta) {
+            cart[index].qty += delta;
+            if (cart[index].qty <= 0) {
+                cart.splice(index, 1);
+            }
+            renderCart();
+        }
+
+        function clearCart() {
+            cart = [];
+            renderCart();
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cartItems');
+            const badge = document.getElementById('cartBadge');
+            const countEl = document.getElementById('cartCount');
+            
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🛒</div>
+                        <div class="empty-state-text">Keranjang kosong</div>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = cart.map((item, i) => `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">Rp ${item.price.toLocaleString()} x ${item.qty}</div>
+                        </div>
+                        <div class="qty-controls">
+                            <button class="qty-btn" onclick="updateQty(${i}, -1)">-</button>
+                            <span class="qty-value">${item.qty}</span>
+                            <button class="qty-btn" onclick="updateQty(${i}, 1)">+</button>
+                        </div>
+                        <div class="cart-item-total">Rp ${(item.price * item.qty).toLocaleString()}</div>
+                        <button class="cart-item-remove" onclick="removeFromCart(${i})">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                            </svg>
+                        </button>
+                    </div>
+                `).join('');
+            }
+
+            // Update totals
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const tax = Math.round(subtotal * 0.1);
+            const total = subtotal + tax;
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+
+            document.getElementById('subtotal').textContent = `Rp ${subtotal.toLocaleString()}`;
+            document.getElementById('tax').textContent = `Rp ${tax.toLocaleString()}`;
+            document.getElementById('total').textContent = `Rp ${total.toLocaleString()}`;
+            badge.textContent = totalItems;
+            countEl.textContent = `${totalItems} item`;
+        }
+
+        // ============================================
+        // CHECKOUT
+        // ============================================
+        function showCheckout() {
+            if (cart.length === 0) {
+                showToast('Keranjang kosong!');
+                return;
+            }
+            document.getElementById('checkoutModal').classList.add('show');
+        }
+
+        function hideCheckout() {
+            document.getElementById('checkoutModal').classList.remove('show');
+        }
+
+        function selectPayment(el) {
+            document.querySelectorAll('.payment-option').forEach(o => o.classList.remove('selected'));
+            el.classList.add('selected');
+        }
+
+        function processPayment() {
+            hideCheckout();
+            clearCart();
+            showToast('Pembayaran berhasil! Struk dicetak.');
+        }
+
+        // ============================================
+        // TOAST
+        // ============================================
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2000);
+        }
+
+        // ============================================
+        // CATEGORY CHIPS
+        // ============================================
+        document.querySelectorAll('.chip').forEach(chip => {
+            chip.addEventListener('click', function() {
+                document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Initial render
+        renderCart();
+    </script>
+</body>
+</html>

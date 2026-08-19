@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+
+    <!-- Outer Rounded Squircle Base -->
+    <path
+        android:pathData="M30,10 L170,10 A20,20 0 0,1 190,30 L190,170 A20,20 0 0,1 170,190 L30,190 A20,20 0 0,1 10,170 L10,30 A20,20 0 0,1 30,10 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="10"
+                android:startY="10"
+                android:endX="190"
+                android:endY="190"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#FF064E3B" />
+                <item android:offset="0.5" android:color="#FF047857" />
+                <item android:offset="1.0" android:color="#FF0F172A" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Inner Glow Ambient Ring -->
+    <path
+        android:pathData="M100,25 A75,75 0 1,0 100,175 A75,75 0 1,0 100,25 Z"
+        android:strokeWidth="2"
+        android:strokeAlpha="0.25">
+        <aapt:attr name="android:strokeColor">
+            <gradient
+                android:startX="40"
+                android:startY="30"
+                android:endX="160"
+                android:endY="170"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#FF34D399" />
+                <item android:offset="1.0" android:color="#0034D399" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Terminal Main Chassis -->
+    <path
+        android:pathData="M60,65 C60,56.72 66.72,50 75,50 L125,50 C133.28,50 140,56.72 140,65 L140,135 C140,143.28 133.28,150 125,150 L75,150 C66.72,150 60,143.28 60,135 Z"
+        android:fillColor="#FFFFFFFF" />
+
+    <!-- Terminal Screen Cutout -->
+    <path
+        android:pathData="M68,60 C68,56.5 70.5,54 74,54 L126,54 C129.5,54 132,56.5 132,60 L132,100 C132,103.5 129.5,106 126,106 L74,106 C70.5,106 68,103.5 68,100 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="68"
+                android:startY="54"
+                android:endX="132"
+                android:endY="106"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#FF064E3B" />
+                <item android:offset="1.0" android:color="#FF022C22" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Screen Graph & Metrics -->
+    <path
+        android:pathData="M78,72 L92,72"
+        android:strokeColor="#FF34D399"
+        android:strokeWidth="4"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M78,82 L105,82"
+        android:strokeColor="#FF6EE7B7"
+        android:strokeWidth="3.5"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M78,92 L96,92"
+        android:strokeColor="#FFA7F3D0"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round" />
+
+    <!-- Screen Verified Badge -->
+    <path
+        android:pathData="M118,85 A9,9 0 1,0 118,103 A9,9 0 1,0 118,85 Z"
+        android:fillColor="#FF10B981" />
+    <path
+        android:pathData="M114,94 L117,97 L122,91"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+
+    <!-- Lightning Speed Flash Accent -->
+    <path
+        android:pathData="M125,32 L144,32 L132,50 L146,50 L120,76 L126,56 L115,56 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="115"
+                android:startY="32"
+                android:endX="146"
+                android:endY="76"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#FFFBBF24" />
+                <item android:offset="1.0" android:color="#FFF59E0B" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Contactless Radio Wave Accent -->
+    <path
+        android:pathData="M60,45 A25,25 0 0,1 80,28"
+        android:strokeColor="#FF34D399"
+        android:strokeWidth="4"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M54,36 A38,38 0 0,1 84,15"
+        android:strokeColor="#FF6EE7B7"
+        android:strokeWidth="4"
+        android:strokeLineCap="round"
+        android:strokeAlpha="0.75" />
+
+    <!-- Card Reader & Bottom Hardware Slot -->
+    <path
+        android:pathData="M76,118 L96,118"
+        android:strokeColor="#FF94A3B8"
+        android:strokeWidth="4"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M106,118 L124,118"
+        android:strokeColor="#FFCBD5E1"
+        android:strokeWidth="4"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M76,132 L124,132"
+        android:strokeColor="#FFE2E8F0"
+        android:strokeWidth="3.5"
+        android:strokeLineCap="round" />
+
+</vector>
