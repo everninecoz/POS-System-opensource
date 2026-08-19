@@ -1,6 +1,9 @@
-# POS Open Source
+# POS Open Source untuk UMKM 
 
-Aplikasi kasir Android gratis dan open source untuk UMKM Indonesia. Berjalan 100% offline, tidak perlu koneksi internet.
+Aplikasi kasir berbasis Android gratis (disarankan pakai tablet) dan open source untuk UMKM Indonesia. Berjalan 100% offline, tidak perlu koneksi internet.
+untuk UMKM yang butuh POS Opensource gratis, bisa lanjut poles sendiri, edit app nya juga, pokoknya ambil aja.
+
+app ini masih V1.0 cuma iseng di buat ya, dan bisa di pake kok.
 
 ---
 
@@ -29,9 +32,6 @@ Aplikasi kasir Android gratis dan open source untuk UMKM Indonesia. Berjalan 100
 - Mode gelap dan terang
 - Bilingual (Indonesia & English)
 
-## Screenshot
-
-> *(Tambahkan screenshot aplikasi di sini)*
 
 ## Teknologi
 
@@ -45,7 +45,7 @@ Aplikasi kasir Android gratis dan open source untuk UMKM Indonesia. Berjalan 100
 | Camera | CameraX |
 | Arsitektur | MVVM + Clean Architecture |
 
-## Kebutuhan
+## Kebutuhan Spesifikasi
 
 - Android 8.0 (API 26) atau lebih baru
 - Untuk printer thermal: printer Bluetooth yang kompatibel ESC/POS
@@ -72,7 +72,7 @@ git clone https://github.com/username/pos-opensrc.git
 
 ### Cara 2: Download APK
 
-*(Tambahkan link download APK release di sini)*
+untuk apk ada di git ini, perbolehkan dulu setting unknown source install biar bisa di install manual.
 
 ## Login Default
 
@@ -133,11 +133,9 @@ Proyek ini menggunakan lisensi MIT. Lihat file [LICENSE](LICENSE) untuk informas
 
 ## Kontak
 
-*(Tambahkan kontak Anda di sini)*
-
-- GitHub: [@username](https://github.com/username)
-- Email: email@example.com
+- GitHub: [@everninecoz]((https://github.com/everninecoz))
+- Email: everninecoz@gmail.com
 
 ---
 
-Dibuat dengan ❤️ untuk UMKM Indonesia.
+Dibuat untuk UMKM Indonesia.
